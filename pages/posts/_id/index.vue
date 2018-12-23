@@ -1,14 +1,12 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1 class="post-title">Title of the Post</h1>
+      <h1 class="post-title">{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Last updated on xxxx.xxxx.</div>
-        <div class="post-detail">Written by XXXXXX</div>
+        <div class="post-detail">Last updated on {{ loadedPost.updatedDate }}</div>
+        <div class="post-detail">Written by {{ loadedPost.author }}</div>
       </div>
-      <p
-        class="post-content"
-      >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas, obcaecati labore doloremque dolorem dicta ea consectetur sunt alias odit, similique quia maxime nemo. Dignissimos non quis recusandae inventore dicta?</p>
+      <p class="post-content">{{ loadedPost.content}}</p>
     </section>
 
     <section class="post-feedback">
@@ -21,7 +19,24 @@
 </template>
 
 <script>
-export default {}
+export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPost: {
+          id: '1',
+          title: 'This is my first post ID ' + context.params.id,
+          thumbnail:
+            'https://techcrunch.com/wp-content/uploads/2018/12/apple-hole.png?w=300&h=160&crop=1',
+          previewText: 'This is a preview text.',
+          content: 'This is a main content some dummy text lorem ipsum',
+          author: 'James Puro',
+          updatedDate: new Date()
+        }
+      })
+    }, 1500)
+  }
+}
 </script>
 
 <style scoped>
