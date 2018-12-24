@@ -39,7 +39,7 @@ export default {
     }
   },
   created() {
-    this.$store.commit('setPosts', this.loadedPosts)
+    this.$store.dispatch('setPosts', this.loadedPosts)
   }
 }
 </script>
