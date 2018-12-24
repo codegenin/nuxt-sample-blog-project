@@ -4,7 +4,8 @@
       <form @submit.prevent="onSave">
         <AppControlInput v-model="editPost.author">Author Name</AppControlInput>
         <AppControlInput v-model="editPost.title">Title</AppControlInput>
-        <AppControlInput v-model="editPost.thumbnailLink">Thumbnail Link</AppControlInput>
+        <AppControlInput v-model="editPost.thumbnail">Thumbnail Link</AppControlInput>
+        <AppControlInput control-type="textarea" v-model="editPost.previewText">Preview Text</AppControlInput>
         <AppControlInput control-type="textarea" v-model="editPost.content">Content</AppControlInput>
         <AppButton type="submit">Save</AppButton>
         <AppButton
@@ -39,7 +40,8 @@ export default {
         : {
             author: '',
             title: '',
-            thumbnailLink: '',
+            thumbnail: '',
+            previewText: '',
             content: ''
           }
     }
@@ -47,7 +49,7 @@ export default {
   methods: {
     onSave() {
       // Save the post
-      console.log(this.editPost)
+      this.$emit('submit', this.editPost)
     },
     onCancel() {
       // Navigate back
