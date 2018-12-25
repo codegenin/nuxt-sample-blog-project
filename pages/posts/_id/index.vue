@@ -27,7 +27,7 @@ export default {
       loadedPost: {}
     }
   },
-  async asyncData(context, callback) {
+  async asyncData(context) {
     return axios
       .get(
         'https://nuxt-blog-72f5f.firebaseio.com/posts/' +
