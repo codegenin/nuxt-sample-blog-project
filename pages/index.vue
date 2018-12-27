@@ -10,12 +10,8 @@
 </template>
 
 <script>
-import PostList from '~/components/Posts/PostList'
 import axios from 'axios'
 export default {
-  components: {
-    PostList
-  },
   data() {
     return {
       posts: []
