@@ -1,7 +1,7 @@
 <template>
   <div class="admin-auth-page">
     <div class="auth-container">
-      <form>
+      <form @submit.prevent="onSubmit">
         <AppControlInput type="email">E-Mail Address</AppControlInput>
         <AppControlInput type="password">Password</AppControlInput>
         <AppButton type="submit">{{ isLogin ? 'Login' : 'Sign Up' }}</AppButton>
@@ -30,6 +30,14 @@ export default {
   data() {
     return {
       isLogin: true
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$axios.$post(
+        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' +
+          process.env.fbAPIKey
+      )
     }
   }
 }
